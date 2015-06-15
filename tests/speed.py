@@ -4,7 +4,7 @@ from fastcomp import compare
 import random
 import string
 
-def randomstr(minlen=5, maxlen=7):
+def randomstr(minlen=5, maxlen=8):
     charset = '01'
     length = random.randint(minlen, maxlen)
     return ''.join(random.choice(charset) for i in range(length))
