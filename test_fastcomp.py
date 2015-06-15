@@ -2,27 +2,45 @@ import unittest
 from fastcomp import compare
 
 class TestFastComp(unittest.TestCase):
-    def test_all(self):
-        self.assertEqual(compare("abc", "abc"), 0)
-        self.assertEqual(compare("abc", "abcd"), 1)
-        self.assertEqual(compare("abc", "abd"), 1)
-        self.assertEqual(compare("abc", "bc"), 1)
-        self.assertEqual(compare("abcde", "acdfe"), 2)
-        self.assertEqual(compare("acdfe", "abcde"), 2)
-        self.assertEqual(compare("abc", "bcd"), 2)
-        self.assertEqual(compare("bcd", "abc"), 2)
-        self.assertEqual(compare("abc", "ade"), 2)
-        self.assertEqual(compare("abc", "eabf"), 2)
-        self.assertEqual(compare("abc", "ebfc"), 2)
-        self.assertEqual(compare("abc", "a"), 2)
-        self.assertEqual(compare("c", "abc"), 2)
-        self.assertEqual(compare("abcde", "bcdgf"), -1)
-        self.assertEqual(compare("abc", "efg"), -1)
-        self.assertEqual(compare("abc", ""), -1)
-        self.assertEqual(compare("", "abc"), -1)
-        self.assertEqual(compare("", "ab"), 2)
-        self.assertEqual(compare("", "a"), 1)
-        self.assertEqual(compare("", ""), 0)
+    def test_equal(self):
+        self.assertEqual(compare('abc', 'abc'), 0)
 
-if __name__ == "__main__":
+    def test_insert(self):
+        self.assertEqual(compare('abc', 'xabc'), 1)
+        self.assertEqual(compare('abc', 'axbc'), 1)
+        self.assertEqual(compare('abc', 'abxc'), 1)
+        self.assertEqual(compare('abc', 'abcx'), 1)
+        self.assertEqual(compare('abc', 'xxabc'), 2)
+        self.assertEqual(compare('abc', 'axxbc'), 2)
+        self.assertEqual(compare('abc', 'abxxc'), 2)
+        self.assertEqual(compare('abc', 'abcxx'), 2)
+        self.assertEqual(compare('abc', 'xabcx'), 2)
+
+    def test_replace(self):
+        self.assertEqual(compare('abc', 'xbc'), 1)
+        self.assertEqual(compare('abc', 'axc'), 1)
+        self.assertEqual(compare('abc', 'abx'), 1)
+        self.assertEqual(compare('abc', 'xxc'), 2)
+        self.assertEqual(compare('abc', 'axx'), 2)
+        self.assertEqual(compare('abc', 'xbx'), 2)
+
+    def test_delete(self):
+        self.assertEqual(compare('abc', 'ab'), 1)
+        self.assertEqual(compare('abc', 'ac'), 1)
+        self.assertEqual(compare('abc', 'bc'), 1)
+        self.assertEqual(compare('a', 'abc'), 2)
+        self.assertEqual(compare('b', 'abc'), 2)
+        self.assertEqual(compare('c', 'abc'), 2)
+
+    def test_emptystr(self):
+        self.assertEqual(compare('', ''), 0)
+        self.assertEqual(compare('', 'a'), 1)
+        self.assertEqual(compare('', 'ab'), 2)
+        self.assertEqual(compare('', 'abc'), -1)
+        self.assertEqual(compare('abc', ''), -1)
+
+    def test_beyond(self):
+        self.assertEqual(compare('abc', 'def'), -1)
+
+if __name__ == '__main__':
     unittest.main()
