@@ -7,27 +7,27 @@ REPLACE = 'r'
 INSERT = 'i'
 DELETE = 'd'
 
+MODELS = [
+    (INSERT+DELETE, DELETE+INSERT, REPLACE+REPLACE),
+    (DELETE+REPLACE, REPLACE+DELETE),
+    (DELETE+DELETE,)
+]
 
 #
 # functions
 
 def compare(str1, str2):
     len1, len2 = len(str1), len(str2)
+
     if len1 < len2:
         len1, len2 = len2, len1
         str1, str2 = str2, str1
 
-    if len1 - len2 == 0:
-        models = (INSERT+DELETE, DELETE+INSERT, REPLACE+REPLACE)
-    elif len1 - len2 == 1:
-        models = (DELETE+REPLACE, REPLACE+DELETE)
-    elif len1 - len2 == 2:
-        models = (DELETE+DELETE,)
-    else:
+    if len1 - len2 > 2:
         return -1
 
-    res = 3
-    for model in models:
+    result = 3
+    for model in MODELS[len1-len2]:
         idx1, idx2, cost = 0, 0, 0
         while (idx1 < len1) and (idx2 < len2):
             if str1[idx1] != str2[idx2]:
@@ -61,10 +61,10 @@ def compare(str1, str2):
             else:
                 continue
 
-        if cost < res:
-            res = cost
+        if cost < result:
+            result = cost
 
-    if res == 3:
-        res = -1
+    if result == 3:
+        result = -1
 
-    return res
+    return result
