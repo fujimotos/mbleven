@@ -1,58 +1,70 @@
 #!/usr/bin/env python
 
-def compare(str1, str2):
-    replace, insert, delete = 'r', 'i', 'd'
+#
+# constants
 
-    L1, L2  = len(str1), len(str2)
-    if L1 < L2:
-        L1, L2 = L2, L1
+REPLACE = 'r'
+INSERT = 'i'
+DELETE = 'd'
+
+
+#
+# functions
+
+def compare(str1, str2):
+    len1, len2 = len(str1), len(str2)
+    if len1 < len2:
+        len1, len2 = len2, len1
         str1, str2 = str2, str1
 
-    if L1 - L2 == 0:
-        models = (insert+delete, delete+insert, replace+replace)
-    elif L1 - L2 == 1:
-        models = (delete+replace, replace+delete)
-    elif L1 - L2 == 2:
-        models = (delete+delete,)
+    if len1 - len2 == 0:
+        models = (INSERT+DELETE, DELETE+INSERT, REPLACE+REPLACE)
+    elif len1 - len2 == 1:
+        models = (DELETE+REPLACE, REPLACE+DELETE)
+    elif len1 - len2 == 2:
+        models = (DELETE+DELETE,)
     else:
         return -1
 
     res = 3
     for model in models:
-        i, j, c = 0, 0, 0
-        while (i < L1) and (j < L2):
-            if str1[i] != str2[j]:
-                c = c+1
-                if 2 < c:
+        idx1, idx2, cost = 0, 0, 0
+        while (idx1 < len1) and (idx2 < len2):
+            if str1[idx1] != str2[idx2]:
+                cost += 1
+                if 2 < cost:
                     break
-                
-                cmd = model[c-1]
-                if cmd == delete:
-                    i = i+1
-                elif cmd == insert:
-                    j = j+1
-                else:
-                    assert cmd == replace
-                    i,j = i+1, j+1
-            else:
-                i,j = i+1, j+1
 
-        if 2 < c:
+                option = model[cost-1]
+                if option == DELETE:
+                    idx1 += 1
+                elif option == INSERT:
+                    idx2 += 1
+                else:  # option == REPLACE
+                    idx1 += 1
+                    idx2 += 1
+
+            else:
+                idx1 += 1
+                idx2 += 1
+
+        if 2 < cost:
             continue
-        elif i < L1:
-            if L1-i <= model[c:].count(delete):
-                c = c + (L1-i)
+        elif idx1 < len1:
+            if len1 - idx1 <= model[cost:].count(DELETE):
+                cost += (len1 - idx1)
             else:
                 continue
-        elif j < L2:
-            if L2-j <= model[c:].count(insert):
-                c = c + (L2-j)
+        elif idx2 < len2:
+            if len2 - idx2 <= model[cost:].count(INSERT):
+                cost = cost + (len2 - idx2)
             else:
                 continue
 
-        if c < res:
-            res = c
+        if cost < res:
+            res = cost
 
     if res == 3:
         res = -1
+
     return res
