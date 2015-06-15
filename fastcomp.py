@@ -56,29 +56,3 @@ def compare(str1, str2):
     if res == 3:
         res = -1
     return res
-
-def test():
-    assert compare("abc", "abc") == 0      # Same
-    assert compare("abc", "abcd") == 1     # Insertion
-    assert compare("abc", "abd") == 1      # Substitute
-    assert compare("abc", "bc") == 1       # Delete
-    assert compare("abcde", "acdfe") == 2  # Distance 2 and L1-L2 = 0
-    assert compare("acdfe", "abcde") == 2   
-    assert compare("abc", "bcd") == 2
-    assert compare("bcd", "abc") == 2       
-    assert compare("abc", "ade") == 2      
-    assert compare("abc", "eabf") == 2     # Distance 2 and L1-L2 = 1
-    assert compare("abc", "ebfc") == 2   
-    assert compare("abc", "a") == 2        # Distance 2 and L1-L2 = 2
-    assert compare("c", "abc") == 2   
-    assert compare("abcde", "bcdgf") == -1 # Distance 3
-    assert compare("abc", "efg") == -1 
-    assert compare("abc", "") == -1        # Comparing with Null string
-    assert compare("", "abc") == -1     
-    assert compare("", "ab") == 2        
-    assert compare("", "a") == 1
-    assert compare("", "") == 0
-    return
-
-if __name__ == "__main__":
-    test()
