@@ -57,7 +57,7 @@ def compare(str1, str2):
                 continue
         elif idx2 < len2:
             if len2 - idx2 <= model[cost:].count(INSERT):
-                cost = cost + (len2 - idx2)
+                cost += (len2 - idx2)
             else:
                 continue
 
