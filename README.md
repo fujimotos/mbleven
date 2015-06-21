@@ -33,6 +33,15 @@ Therefore, the return value should be any one of 0, 1, 2 or -1.
 -1
 ```
 
+You can also measure the similarity using [Damerau–Levenshtein 
+distance](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)
+by setting transpose flag true.
+
+```
+>>> compare("meta", "meat", transpose=True)
+1
+```
+
 ## Demo
 
 http://ceptord.net/fastcomp/demo/
