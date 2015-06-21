@@ -25,11 +25,11 @@ Therefore, the return value should be any one of 0, 1, 2 or -1.
 
 ```
 >>> from fastcomp import compare
->>> compare("than", "then")
+>>> compare("meet", "meat")
 1
->>> compare("meeting", "eating")
+>>> compare("meet", "eat")
 2
->>> compare("book", "talk") # distance 3
+>>> compare("meet", "mars")  # distance 3
 -1
 ```
 
@@ -38,7 +38,7 @@ distance](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)
 by setting transpose flag true.
 
 ```
->>> compare("meta", "meat", transpose=True)
+>>> compare("meat", "meta", transpose=True)
 1
 ```
 
