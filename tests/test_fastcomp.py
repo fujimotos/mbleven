@@ -32,6 +32,13 @@ class TestFastComp(unittest.TestCase):
         self.assertEqual(compare('b', 'abc'), 2)
         self.assertEqual(compare('c', 'abc'), 2)
 
+    def test_transpose(self):
+        self.assertEqual(compare('abc', 'bac', True), 1)
+        self.assertEqual(compare('abc', 'acb', True), 1)
+        self.assertEqual(compare('abc', 'cba', True), 2)
+        self.assertEqual(compare('abc', 'ba', True), 2)
+        self.assertEqual(compare('abc', 'ca', True), 2)
+
     def test_emptystr(self):
         self.assertEqual(compare('', ''), 0)
         self.assertEqual(compare('', 'a'), 1)
