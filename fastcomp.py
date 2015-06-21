@@ -23,7 +23,7 @@ MODELS_T = [
 #
 # functions
 
-def compare(str1, str2):
+def compare(str1, str2, transpose=False):
     len1, len2 = len(str1), len(str2)
 
     if len1 < len2:
@@ -33,11 +33,16 @@ def compare(str1, str2):
     if len1 - len2 > 2:
         return -1
 
+    models = MODELS[len1-len2]
+    if transpose:
+        models += MODELS_T[len1-len2]
+
     result = 3
-    for model in MODELS[len1-len2]:
-        idx1, idx2, cost = 0, 0, 0
+    for model in models:
+        idx1, idx2 = 0, 0
+        cost, pad = 0, 0
         while (idx1 < len1) and (idx2 < len2):
-            if str1[idx1] != str2[idx2]:
+            if str1[idx1] != str2[idx2 - pad]:
                 cost += 1
                 if 2 < cost:
                     break
@@ -47,13 +52,22 @@ def compare(str1, str2):
                     idx1 += 1
                 elif option == INSERT:
                     idx2 += 1
-                else:  # option == REPLACE
+                elif option == REPLACE:
                     idx1 += 1
                     idx2 += 1
-
+                    pad = 0
+                else:  # option == TRANSPOSE
+                    if (idx2 + 1) < len2 and str1[idx1] == str2[idx2+1]:
+                        idx1 += 1
+                        idx2 += 1
+                        pad = 1
+                    else:
+                        cost = 3
+                        break
             else:
                 idx1 += 1
                 idx2 += 1
+                pad = 0
 
         if 2 < cost:
             continue
