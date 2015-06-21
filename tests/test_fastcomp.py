@@ -32,6 +32,12 @@ class TestFastComp(unittest.TestCase):
         self.assertEqual(compare('b', 'abc'), 2)
         self.assertEqual(compare('c', 'abc'), 2)
 
+    def test_insert_delete(self):
+        self.assertEqual(compare('abcde', 'eabcd'), 2)
+        self.assertEqual(compare('abcde', 'acdeb'), 2)
+        self.assertEqual(compare('abcde', 'abdec'), 2)
+        self.assertEqual(compare('ababa', 'babab'), 2)
+
     def test_transpose(self):
         self.assertEqual(compare('abc', 'bac', True), 1)
         self.assertEqual(compare('abc', 'acb', True), 1)
