@@ -9,23 +9,23 @@ def read(filename):
     return text
 
 setup(
-    name="fastcomp",
-    version="1.0.0",
-    py_modules=["fastcomp"],
-    author="Seiji Fujimoto",
-    author_email="fujimoto@ceptord.net",
-    url="http://ceptord.net/fastcomp/",
-    description="faster computation of Levenshtein distance for spell checkers",
+    name='fastcomp',
+    version='1.1.0',
+    py_modules=['fastcomp'],
+    author='Fujimoto Seiji',
+    author_email='fujimoto@ceptord.net',
+    url='https://github.com/fujimotos/fastcomp',
+    description='Limited-but-faster computation of Levenshtein distance',
     long_description=read('README.md'),
     classifiers=[
-        "Programming Language :: Python",
-        "Development Status :: 4 - Beta",
-        "Intended Audience :: Science/Research",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 3",
-        "Topic :: Scientific/Engineering",
-        "Topic :: Text Processing"
+        'Programming Language :: Python',
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
+        'Topic :: Scientific/Engineering',
+        'Topic :: Text Processing'
     ]
 )
