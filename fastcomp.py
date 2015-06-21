@@ -37,7 +37,7 @@ def compare(str1, str2, transpose=False):
     if transpose:
         models += MODELS_T[len1-len2]
 
-    result = 3
+    res = 3
     for model in models:
         idx1, idx2 = 0, 0
         cost, pad = 0, 0
@@ -82,10 +82,10 @@ def compare(str1, str2, transpose=False):
             else:
                 continue
 
-        if cost < result:
-            result = cost
+        if cost < res:
+            res = cost
 
-    if result == 3:
-        result = -1
+    if res == 3:
+        res = -1
 
-    return result
+    return res
