@@ -40,6 +40,8 @@ by setting transpose flag true.
 ```
 >>> compare("meat", "meta", transpose=True)
 1
+>>> compare("abc", "ca", transpose=True)
+2
 ```
 
 ## Demo
