@@ -44,6 +44,10 @@ by setting transpose flag true.
 2
 ```
 
+## Technical documentation
+
+http://fujimotos.github.io/fastcomp/ (for internals)
+
 ## Demo
 
 http://ceptord.net/fastcomp/demo/
