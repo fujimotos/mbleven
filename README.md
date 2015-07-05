@@ -1,4 +1,5 @@
-# fastcomp
+fastcomp
+========
 
 The fastcomp is an efficient algorithm for computating Levenshtein
 distance **up to two**.
@@ -8,11 +9,13 @@ computation requires O(1) space and O(n) time, which is
 much smaller and faster than well-known [Wagner-Fisher
 algorithm](https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm).
 
-## Requirements
+Requirements
+------------
 
 Python 2.6 or later
 
-## Usage
+Usage
+-----
 
 The fastcomp.py has a function named `compare()`. It takes two strings as
 arguments and returns an integer, which is...
@@ -44,11 +47,13 @@ by setting transpose flag true.
 2
 ```
 
-## Technical documentation
+Technical documentation
+-----------------------
 
 http://fujimotos.github.io/fastcomp/ (for internals)
 
-## Demo
+Demo
+----
 
 http://ceptord.net/fastcomp/demo/
 
