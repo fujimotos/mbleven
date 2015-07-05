@@ -39,49 +39,7 @@ def compare(str1, str2, transpose=False):
 
     res = 3
     for model in models:
-        idx1, idx2 = 0, 0
-        cost, pad = 0, 0
-        while (idx1 < len1) and (idx2 < len2):
-            if str1[idx1] != str2[idx2 - pad]:
-                cost += 1
-                if 2 < cost:
-                    break
-
-                option = model[cost-1]
-                if option == DELETE:
-                    idx1 += 1
-                elif option == INSERT:
-                    idx2 += 1
-                elif option == REPLACE:
-                    idx1 += 1
-                    idx2 += 1
-                    pad = 0
-                else:  # option == TRANSPOSE
-                    if (idx2 + 1) < len2 and str1[idx1] == str2[idx2+1]:
-                        idx1 += 1
-                        idx2 += 1
-                        pad = 1
-                    else:
-                        cost = 3
-                        break
-            else:
-                idx1 += 1
-                idx2 += 1
-                pad = 0
-
-        if 2 < cost:
-            continue
-        elif idx1 < len1:
-            if len1 - idx1 <= model[cost:].count(DELETE):
-                cost += (len1 - idx1)
-            else:
-                continue
-        elif idx2 < len2:
-            if len2 - idx2 <= model[cost:].count(INSERT):
-                cost += (len2 - idx2)
-            else:
-                continue
-
+        cost = _checkmodel(str1, str2, len1, len2, model)
         if cost < res:
             res = cost
 
@@ -89,3 +47,50 @@ def compare(str1, str2, transpose=False):
         res = -1
 
     return res
+
+
+def _checkmodel(str1, str2, len1, len2, model):
+    """Check if the model can transform str1 into str2"""
+
+    idx1, idx2 = 0, 0
+    cost, pad = 0, 0
+    while (idx1 < len1) and (idx2 < len2):
+        if str1[idx1] != str2[idx2 - pad]:
+            cost += 1
+            if 2 < cost:
+                return cost
+
+            option = model[cost-1]
+            if option == DELETE:
+                idx1 += 1
+            elif option == INSERT:
+                idx2 += 1
+            elif option == REPLACE:
+                idx1 += 1
+                idx2 += 1
+                pad = 0
+            else:  # option == TRANSPOSE
+                if (idx2 + 1) < len2 and str1[idx1] == str2[idx2+1]:
+                    idx1 += 1
+                    idx2 += 1
+                    pad = 1
+                else:
+                    return 3
+        else:
+            idx1 += 1
+            idx2 += 1
+            pad = 0
+
+    diff1, diff2 = (len1 - idx1), (len2 - idx2)
+    remain = model[cost:]
+
+    if diff1 > 0:
+        if diff1 > remain.count(DELETE):
+            return 3
+        cost += diff1
+    elif diff2 > 0:
+        if diff2 > remain.count(INSERT):
+            return 3
+        cost += diff2
+
+    return cost
