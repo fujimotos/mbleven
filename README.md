@@ -57,7 +57,7 @@ by setting transpose flag true.
 Demo
 ----
 
-http://ceptord.net/fastcomp/demo/
+http://fujimotos.github.io/spella/
 
 Technical documentation
 -----------------------
