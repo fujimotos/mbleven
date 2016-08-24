@@ -3,7 +3,7 @@ from distutils.core import setup
 
 setup(
     name='fastcomp',
-    version='1.1.0',
+    version='1.2.0',
     py_modules=['fastcomp'],
     author='Fujimoto Seiji',
     author_email='fujimoto@ceptord.net',
