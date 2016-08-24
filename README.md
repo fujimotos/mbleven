@@ -1,8 +1,8 @@
 fastcomp
 ========
 
-The fastcomp is an efficient algorithm for computing Levenshtein
-distance **up to two**.
+The fastcomp is an efficient algorithm for computing (Damerau-)
+Levenshtein distance **up to two**.
 
 Given two strings of length m and n (m <= n), the
 computation requires O(1) space and O(n) time, which is
