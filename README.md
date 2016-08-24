@@ -12,14 +12,9 @@ algorithm](https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm).
 Installation
 ------------
 
-Clone this repository and simply run setup.py (Python 2.6 or later required).
+You can install via pip:
 
-```
-$ git clone https://github.com/fujimotos/fastcomp.git
-$ cd fastcomp
-$ python setup.py install
-$ python -m unittest discover tests  # running test (optional)
-```
+    $ pip install fastcomp
 
 Usage
 -----
