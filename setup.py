@@ -17,6 +17,7 @@ setup(
     url='https://github.com/fujimotos/fastcomp',
     description='Limited-but-faster computation of Levenshtein distance',
     long_description=read('README.md'),
+    license='MIT',
     classifiers=[
         'Programming Language :: Python',
         'Development Status :: 4 - Beta',
