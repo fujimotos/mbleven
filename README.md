@@ -12,9 +12,15 @@ algorithm](https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm).
 Installation
 ------------
 
-You can install via pip:
-
     $ pip install fastcomp
+
+
+**Note**
+
+If you consider using fastcomp algorithm, please take a look at
+[distance](https://github.com/doukremt/distance) project.
+This project contains the C implementation of this algorithm, and it beats
+the native Python-based implementation in speed by orders of magnitude!
 
 Usage
 -----
