@@ -81,16 +81,4 @@ def _checkmodel(str1, str2, len1, len2, model):
             idx2 += 1
             pad = 0
 
-    diff1, diff2 = (len1 - idx1), (len2 - idx2)
-    remain = model[cost:]
-
-    if diff1 > 0:
-        if diff1 > remain.count(DELETE):
-            return 3
-        cost += diff1
-    elif diff2 > 0:
-        if diff2 > remain.count(INSERT):
-            return 3
-        cost += diff2
-
-    return cost
+    return cost + (len1 - idx1) + (len2 - idx2)
