@@ -55,11 +55,6 @@ by setting transpose flag true.
 2
 ```
 
-Demo
-----
-
-http://fujimotos.github.io/spella/
-
 Technical documentation
 -----------------------
 
