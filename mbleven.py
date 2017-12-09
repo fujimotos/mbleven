@@ -1,27 +1,27 @@
-#!/usr/bin/env python
+"""An implementation of mbleven algorithm"""
 
 #
-# constants
+# Constants
 
 REPLACE = 'r'
 INSERT = 'i'
 DELETE = 'd'
 TRANSPOSE = 't'
 
-MODELS = [
-    (INSERT+DELETE, DELETE+INSERT, REPLACE+REPLACE),
-    (DELETE+REPLACE, REPLACE+DELETE),
-    (DELETE+DELETE,)
+MATRIX = [
+    ['id', 'di', 'rr'],
+    ['dr', 'rd'],
+    ['dd']
 ]
 
-MODELS_T = [
-    (TRANSPOSE+TRANSPOSE, TRANSPOSE+REPLACE, REPLACE+TRANSPOSE),
-    (DELETE+TRANSPOSE, TRANSPOSE+DELETE),
-    tuple()
+MATRIX_T = [
+    ['id', 'di', 'rr', 'tt', 'tr', 'rt'],
+    ['dr', 'rd', 'dt', 'td'],
+    ['dd']
 ]
 
 #
-# functions
+# Library API
 
 def compare(str1, str2, transpose=False):
     len1, len2 = len(str1), len(str2)
@@ -33,13 +33,14 @@ def compare(str1, str2, transpose=False):
     if len1 - len2 > 2:
         return -1
 
-    models = MODELS[len1-len2]
     if transpose:
-        models += MODELS_T[len1-len2]
+        models = MATRIX_T[len1-len2]
+    else:
+        models = MATRIX[len1-len2]
 
     res = 3
     for model in models:
-        cost = _checkmodel(str1, str2, len1, len2, model)
+        cost = check_model(str1, str2, len1, len2, model)
         if cost < res:
             res = cost
 
@@ -49,7 +50,7 @@ def compare(str1, str2, transpose=False):
     return res
 
 
-def _checkmodel(str1, str2, len1, len2, model):
+def check_model(str1, str2, len1, len2, model):
     """Check if the model can transform str1 into str2"""
 
     idx1, idx2 = 0, 0
@@ -69,7 +70,7 @@ def _checkmodel(str1, str2, len1, len2, model):
                 idx1 += 1
                 idx2 += 1
                 pad = 0
-            else:  # option == TRANSPOSE
+            elif option == TRANSPOSE:
                 if (idx2 + 1) < len2 and str1[idx1] == str2[idx2+1]:
                     idx1 += 1
                     idx2 += 1
