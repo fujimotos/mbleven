@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from fastcomp import compare
+from mbleven import compare
 import random
 import string
 

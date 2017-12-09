@@ -1,5 +1,5 @@
 import unittest
-from fastcomp import compare
+from mbleven import compare
 
 #
 # Testing with binary patterns

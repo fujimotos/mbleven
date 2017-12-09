@@ -1,5 +1,5 @@
 import unittest
-from fastcomp import compare
+from mbleven import compare
 
 class TestFastComp(unittest.TestCase):
     def test_equal(self):
