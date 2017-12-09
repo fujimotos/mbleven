@@ -10,6 +10,14 @@ faster than well-known [Wagner-Fisher algorithm](
 https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm).
 
 
+IMPORTANT NOTICE
+----------------
+
+This is a proof-of-concept implementation to show how mbleven algorithm
+works. If you are searching for a practical library to compute Levenshtein
+distance, please take a look at [polyleven](
+https://github.com/fujimotos/polyleven).
+
 
 Installation
 ------------
