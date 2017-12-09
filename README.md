@@ -6,8 +6,7 @@ computing bounded Damerau-Levenshtein distance.
 
 Given two strings of length m and n (m <= n), the computation
 requires O(1) space and O(n) time, which is much smaller and
-faster than well-known [Wagner-Fisher algorithm](
-https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm).
+faster than well-known Wagner-Fisher algorithm.
 
 
 IMPORTANT NOTICE
@@ -41,8 +40,8 @@ arguments and returns an integer, which is...
 
 Therefore, the return value should be any one of 0, 1, 2 or -1.
 
-```
->>> from fastcomp import compare
+```python
+>>> from mbleven import compare
 >>> compare("meet", "meat")
 1
 >>> compare("meet", "eat")
@@ -55,7 +54,7 @@ You can also measure the similarity using [Damerau–Levenshtein
 distance](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)
 by setting `transpose` flag true.
 
-```
+```python
 >>> compare("meat", "meta", transpose=True)
 1
 >>> compare("abc", "ca", transpose=True)
