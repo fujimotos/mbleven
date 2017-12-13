@@ -31,8 +31,8 @@ Clone this repository and run setup.py
 Usage
 -----
 
-This module provides a function named `compare()`. It takes two strings as
-arguments and returns an integer, which is...
+This module provides a function named `compare()`. It takes two strings
+as arguments and returns an integer, which is...
 
 * the exact distance between two strings (if they are within two edit
   distance)
@@ -50,8 +50,7 @@ Therefore, the return value should be any one of 0, 1, 2 or -1.
 -1
 ```
 
-You can also measure the similarity using [Damerau–Levenshtein 
-distance](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)
+You can also measure the similarity using Damerau-Levenshtein distance
 by setting `transpose` flag true.
 
 ```python
@@ -61,7 +60,8 @@ by setting `transpose` flag true.
 2
 ```
 
+
 Technical documentation
 -----------------------
 
-http://fujimotos.github.io/fastcomp/ (for developers)
+http://fujimotos.github.io/fastcomp/
