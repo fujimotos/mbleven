@@ -1,12 +1,13 @@
 mbleven
 =======
 
-mbleven (previously called *fastcomp*) is an efficient algorithm for
-computing bounded Damerau-Levenshtein distance.
+mbleven is a fast, memory-efficient algorithm to compute k-bounded
+Levenshtein distance.
 
-Given two strings of length m and n (m <= n), the computation
-requires O(1) space and O(n) time, which is much smaller and
-faster than well-known Wagner-Fisher algorithm.
+If the upper-bound parameter k is small (especially k=1,2), this
+algorithm runs much faster than the Wagner-Fischer algorithm.
+
+For details, see [the documentation](https://ceptord.net/fastcomp/index.html).
 
 
 IMPORTANT NOTICE
@@ -59,9 +60,3 @@ by setting `transpose` flag true.
 >>> compare("abc", "ca", transpose=True)
 2
 ```
-
-
-Technical documentation
------------------------
-
-http://fujimotos.github.io/fastcomp/
