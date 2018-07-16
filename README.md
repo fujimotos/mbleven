@@ -1,6 +1,30 @@
 fastcomp
 ========
 
+This PyPI package is deprecated and will be removed in 2019-08-01.
+
+This package was created as a reference implementation of the mbleven
+algorithm. Although the underlying algorithm is still the fastest
+solution to compute Levenshtein distance under a small threshold k,
+this particular implementation is not.
+
+The slowness comes from the sore fact that it is implemented in pure
+Python. A simple benchmark suggests that it is 10x-20x slower than an
+equivalent implementation in C.
+
+   $ python3 -m timeit -s 'import polyleven' 'polyleven.levenshtein("abcde", "edcba")'
+   1000000 loops, best of 3: 0.359 usec per loop
+   $ python3 -m timeit -s 'import fastcomp' 'fastcomp.compare("abcde", "edcba")'
+   100000 loops, best of 3: 5.92 usec per loop
+
+In short, I do not believe this library is suitable for practical use
+anymore. I'd like to recommend considering the [polyleven](https://github.com/fujimotos/polyleven) library if you
+are interested in a practical Python library for computing Levenshtein
+distance.
+
+Overview
+--------
+
 The fastcomp is an efficient algorithm for computing (Damerau-)
 Levenshtein distance **up to two**.
 
@@ -13,14 +37,6 @@ Installation
 ------------
 
     $ pip install fastcomp
-
-
-**Note**
-
-If you consider using fastcomp algorithm, please take a look at
-[distance](https://github.com/doukremt/distance) project.
-This project contains the C implementation of this algorithm, and it beats
-the native Python-based implementation in speed by orders of magnitude!
 
 Usage
 -----
@@ -55,12 +71,7 @@ by setting transpose flag true.
 2
 ```
 
-Demo
-----
-
-http://fujimotos.github.io/spella/
-
 Technical documentation
 -----------------------
 
-http://fujimotos.github.io/fastcomp/ (for developers)
+http://ceptord.net/fastcomp/
