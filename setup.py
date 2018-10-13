@@ -3,7 +3,7 @@ from distutils.core import setup
 
 setup(
     name='mbleven',
-    version='1.2.0',
+    version='1.4.0',
     py_modules=['mbleven'],
     author='Fujimoto Seiji',
     author_email='fujimoto@ceptord.net',
