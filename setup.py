@@ -9,11 +9,10 @@ setup(
     author_email='fujimoto@ceptord.net',
     url='https://github.com/fujimotos/mbleven',
     description='An efficient algorithm for k-bounded (Damerau-)Levenshtein distance',
-    license='MIT License',
+    license='Public domain',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
         'Topic :: Scientific/Engineering',
